@@ -20,9 +20,12 @@ related C++.
 I would be very happy if i get chance to be a "Software Engineer", also passionate in learning 
 new things. Im afraid that I may not get the job because of my weakness below:
 
-   *QUALIFICATION NOT MET (DIPLOMA IN COMPUTER ENGINEERING, WITH CGPA 2.79)
-   *NOT AN ADDMATHS/ENGINEERING MATHS PRO
-   *MAY NOT ABLE TO PROVIDE SOLUTIONS FOR CRITICAL PROBLEMS
+   -QUALIFICATION NOT MET (DIPLOMA IN COMPUTER ENGINEERING, WITH CGPA 2.79)
+   
+   -NOT AN ADDMATHS/ENGINEERING MATHS PRO   
+   
+   -MAY NOT ABLE TO PROVIDE SOLUTIONS FOR CRITICAL PROBLEMS
+   
 
 If my weakness doesn't matter, then you may call me for an interview, if I never meet the requirements
 then Im sorry, we are both unlucky. Thank You for your time.
