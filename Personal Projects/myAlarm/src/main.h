@@ -50,10 +50,6 @@ DOPPLER dopp1;
 StaticJsonDocument<512> jsonDoc;
 
 
-
-// sensorInitialization<int> sensorFL {19, 18, 2};
-// sensorInitialization<int> sensorBR {19, 18, 3};
-// sensorInitialization<int> sensorBL {19, 18, 4};
 ///////////////////////////////////////////////GLOBAL DECLARATION/////////////////////////////////////////////////////////////
  
 bool isConnected = false;

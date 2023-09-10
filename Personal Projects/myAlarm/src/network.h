@@ -9,60 +9,10 @@
 #include <AsyncElegantOTA.h>
 
 
-// #define WIFI_SSID "SunnyVilleHome"
-// #define WIFI_PASSWORD "SunnyVilleHome0803"
-// #define WIFI_SSIDh "MARYAGUSSOLO@CelcomFibre"
-// #define WIFI_PASSWORDh "ASFAMILY"
-// #define WIFI_SSIDp "POCOM4Pro5G"
-// #define WIFI_PASSWORDp "ke70ke30"
- 
-
 class WifiInitialize
 {
  
    public:
-
-  //  IPAddress local_IP{192, 168, 0, 88};
-  //  IPAddress gateway{192, 168, 0, 254};
-  //  IPAddress subnet{255, 255, 255, 0};
-  //  IPAddress primaryDNS{8, 8, 8, 8};
-  //  IPAddress secondaryDNS{8, 8, 4, 4};
-
-   WifiInitialize()
-   {
-     
-   }
-
-  //  void setupWifi()
-  //  {
-    
-  //   Serial.println("Connecting to WIFI");
-  //   WiFi.mode(WIFI_STA);
-  //   WiFi.persistent(false);
-  //   WiFi.setAutoReconnect(true);
-  //   WiFi.setSleep(false);
-  //   WiFi.begin(WIFI_SSID,WIFI_PASSWORD);
-  //   while (WiFi.status() != WL_CONNECTED)
-  //   {
-  //      Serial.print(".");
-  //      delay(200);
-  //      unsigned long currentTime = millis();
-  //      unsigned long elapsedTime = currentTime - wifiRetry;
-  //      if (elapsedTime >= interval)
-  //      {
-  //        WiFi.begin(WIFI_SSID,WIFI_PASSWORD);
-  //        delay(100);
-  //        wifiRetry = millis();
-  //        currentTime = 0;
-  //        elapsedTime - 0;
-  //      }
-  //   }
-  //   Serial.println("Connected to IP:");
-  //   delay(10);
-  //   Serial.println(WiFi.localIP());
-  //   delay(10);
-  //  }
-
 
   void setupWifi(const char* SSID, const char* PASS)
    {
@@ -110,32 +60,6 @@ class WifiInitialize
      return IP;
 
    }
-
-  //  bool checkstatus()
-  //  {
-  //    if(WiFi.status() == WL_CONNECTED)
-  //    {
-  //      return true;
-  //    }
-  //    else if (WiFi.status() != WL_CONNECTED)
-  //    {
-  //      Serial.println("Retrying to connect WIFI");
-  //      WiFi.begin(WIFI_SSID,WIFI_PASSWORD);
-  //      while (WiFi.status() != WL_CONNECTED)
-  //      {
-  //          Serial.print(".");
-  //          delay(200);
-  //      }
-  //      Serial.println("Connected to IP:");
-  //      delay(10);
-  //      Serial.println(WiFi.localIP());
-  //      delay(10);
-
-  //    }
-     
-  //    return false;
-
-  //  }
 
    bool connectWifiRequest(bool on)
    {
@@ -298,10 +222,8 @@ class getWhether
   int httpCode;
   unsigned long startTime;
   unsigned long interval = 20000;
-  String URL = "https://api.openweathermap.org/data/2.5/weather?";
-  String WHEATHERKEY = "d55e167341b2fbcee5eac620f2854cf1";
-  String latitude = "5.320078266477039";
-  String longtitude = "100.47410605598543";
+  String URL = "//";
+  String WHEATHERKEY = "//";
   
 
 };
@@ -349,7 +271,7 @@ class GSM
    sendATCommand("AT+HTTPPARA=CID,1");
    updateSerial();
    String val_ = String(val);
-   String URL = "https://us-central1-myalarm-66cd2.cloudfunctions.net/upload?" + path + "=" + val_;
+   String URL = "//" + path + "=" + val_;
    sendATCommand("AT+HTTPPARA=\"URL\",\"" + URL + "\"");
    updateSerial();
    sendATCommand("AT+HTTPPARA=REDIR,1");
@@ -358,7 +280,7 @@ class GSM
    updateSerial();
 
    sim800.setTimeout(7000);
-   sendATCommand("AT+HTTPACTION=1"); // USE GET AS FUNCTION IS PROGRAM LIKE THAT
+   sendATCommand("AT+HTTPACTION=1"); 
   
   if (verifyReq("200", 6000) == true) 
   {
@@ -384,7 +306,7 @@ class GSM
    updateSerial();
    sendATCommand("AT+HTTPPARA=CID,1");
    updateSerial();
-   String URL = "https://us-central1-myalarm-66cd2.cloudfunctions.net/upload?APP>ONBOOTUP=1";
+   String URL = "//";
    sendATCommand("AT+HTTPPARA=\"URL\",\"" + URL + "\"");
    updateSerial();
    sendATCommand("AT+HTTPPARA=REDIR,1");
@@ -393,8 +315,8 @@ class GSM
    updateSerial();
 
    sim800.setTimeout(7000);
-   sendATCommand("AT+HTTPACTION=1"); // USE POST AS FUNCTION IS PROGRAM LIKE THAT
-  
+   sendATCommand("AT+HTTPACTION=1"); 
+
   if (verifyReq("200", 6000) == true) 
   {
     sim800.setTimeout(500);
@@ -420,7 +342,7 @@ class GSM
    updateSerial();
    sendATCommand("AT+HTTPPARA=CID,1");
    updateSerial();
-   String URL = "https://us-central1-myalarm-66cd2.cloudfunctions.net/upload?" + path;
+   String URL = "//" + path;
    sendATCommand("AT+HTTPPARA=\"URL\",\"" + URL + "\"");
    updateSerial();
    sendATCommand("AT+HTTPPARA=REDIR,1");
@@ -429,7 +351,7 @@ class GSM
    updateSerial();
 
    sim800.setTimeout(7000);
-   sendATCommand("AT+HTTPACTION=1"); // USE GET AS FUNCTION IS PROGRAM LIKE THAT
+   sendATCommand("AT+HTTPACTION=1");
   
   if (verifyReq("200", 6000) == true) 
   {
@@ -455,7 +377,7 @@ class GSM
    updateSerial();
    sendATCommand("AT+HTTPPARA=CID,1");
    updateSerial();
-   String URL = "https://us-central1-myalarm-66cd2.cloudfunctions.net/upload/" + path + "=" + val;
+   String URL = "//" + path + "=" + val;
    sendATCommand("AT+HTTPPARA=\"URL\",\"" + URL + "\"");
    updateSerial();
    sendATCommand("AT+HTTPPARA=REDIR,1");
@@ -464,7 +386,7 @@ class GSM
    updateSerial();
 
    sim800.setTimeout(7000);
-   sendATCommand("AT+HTTPACTION=0"); // USE GET AS FUNCTION IS PROGRAM LIKE THAT
+   sendATCommand("AT+HTTPACTION=0"); 
 
   if (verifyReq("200", 6000) == true) 
   {
@@ -500,7 +422,7 @@ class GSM
   updateSerial();
   sendATCommand("AT+HTTPPARA=CID,1");
   updateSerial();
-  String URL = "https://myalarm-66cd2-default-rtdb.asia-southeast1.firebasedatabase.app/" + path + ".json";
+  String URL = "//" + path + ".json";
   sendATCommand("AT+HTTPPARA=\"URL\",\"" + URL + "\"");
   updateSerial();
   sendATCommand("AT+HTTPPARA=\"REDIR\",1");
@@ -515,11 +437,9 @@ class GSM
    sim800.println("AT+HTTPREAD");
     if (verifyReq("+HTTPREAD", 1000) == true)
     {
-      //Serial.println("YES WE ENTERED");
       String get = sim800.readString();
       String val = extractValue(getString());
       value = val.toInt();
-      //Serial.println("HERE VAL IS :" + val);
       sim800.setTimeout(10);
     }
   }
@@ -540,7 +460,7 @@ class GSM
   updateSerial();
   sendATCommand("AT+HTTPPARA=CID,1");
   updateSerial();
-  String URL = "https://myalarm-66cd2-default-rtdb.asia-southeast1.firebasedatabase.app/" + path + ".json";
+  String URL = "//" + path + ".json";
   sendATCommand("AT+HTTPPARA=\"URL\",\"" + URL + "\"");
   updateSerial();
   sendATCommand("AT+HTTPPARA=\"REDIR\",1");
@@ -555,7 +475,6 @@ class GSM
    sim800.println("AT+HTTPREAD");
     if (verifyReq("+HTTPREAD", 1000) == true)
     {
-      //Serial.println("YES WE ENTERED");
       String get = sim800.readString();
       String val = extractValue(getString());
       value = val.toInt();
@@ -567,7 +486,6 @@ class GSM
       {
         return false;
       }
-      //Serial.println("HERE VAL IS :" + val);
       sim800.setTimeout(10);
     }
   }
@@ -587,7 +505,7 @@ class GSM
   updateSerial();
   sendATCommand("AT+HTTPPARA=CID,1");
   updateSerial();
-  String URL = "https://myalarm-66cd2-default-rtdb.asia-southeast1.firebasedatabase.app/APP/POSTDATA/POSTALLOWED.json";
+  String URL = "//";
   sendATCommand("AT+HTTPPARA=\"URL\",\"" + URL + "\"");
   updateSerial();
   sendATCommand("AT+HTTPPARA=\"REDIR\",1");
@@ -601,7 +519,6 @@ class GSM
    sim800.println("AT+HTTPREAD");
     if (verifyReq("+HTTPREAD", 1000) == true)
     {
-      //Serial.println("YES WE ENTERED");
       String get = sim800.readString();
       String val = extractValue(getString());
       value = val.toInt();
@@ -613,7 +530,6 @@ class GSM
       {
         return false;
       }
-      //Serial.println("HERE VAL IS :" + val);
       sim800.setTimeout(10);
     }
   }
@@ -633,7 +549,7 @@ class GSM
   updateSerial();
   sendATCommand("AT+HTTPPARA=CID,1");
   updateSerial();
-  String URL = "https://myalarm-66cd2-default-rtdb.asia-southeast1.firebasedatabase.app/" + path + ".json";
+  String URL = "//" + path + ".json";
   sendATCommand("AT+HTTPPARA=\"URL\",\"" + URL + "\"");
   updateSerial();
   sendATCommand("AT+HTTPPARA=\"REDIR\",1");
@@ -648,10 +564,8 @@ class GSM
    sim800.println("AT+HTTPREAD");
     if (verifyReq("+HTTPREAD", 1000) == true)
     {
-      //Serial.println("YES WE ENTERED");
       String get = sim800.readString();
       val = extractValue(getString());
-      //Serial.println("HERE VAL IS :" + val);
       sim800.setTimeout(10);
     }
   }
@@ -672,7 +586,7 @@ class GSM
   updateSerial();
   sendATCommand("AT+HTTPPARA=CID,1");
   updateSerial();
-  String URL = "https://myalarm-66cd2-default-rtdb.asia-southeast1.firebasedatabase.app/" + path + ".json";
+  String URL = "//" + path + ".json";
   sendATCommand("AT+HTTPPARA=\"URL\",\"" + URL + "\"");
   updateSerial();
   sendATCommand("AT+HTTPPARA=\"REDIR\",1");
@@ -709,7 +623,7 @@ class GSM
   updateSerial();
   sendATCommand("AT+HTTPPARA=CID,1");
   updateSerial();
-  String URL = "https://myalarm-66cd2-default-rtdb.asia-southeast1.firebasedatabase.app/APP/APPSTATE.json";
+  String URL = "//";
   sendATCommand("AT+HTTPPARA=\"URL\",\"" + URL + "\"");
   updateSerial();
   sendATCommand("AT+HTTPPARA=\"REDIR\",1");

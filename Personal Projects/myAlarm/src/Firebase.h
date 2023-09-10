@@ -124,7 +124,7 @@ class FirebaseInitialization
 private:
 
 WifiInitialize wifi;
-std::string WEB_KEY = "AIzaSyDJ4CMg_uFZU0dOP2sjxXwNPpLPWeI4o9U";
-std::string DATABASE_URL = "https://myalarm-66cd2-default-rtdb.asia-southeast1.firebasedatabase.app/";
+std::string WEB_KEY = "//";
+std::string DATABASE_URL = "//";
 
 };

@@ -171,28 +171,3 @@ struct DOPPLER
 };
 
 
-
-
-
-
-
-
-// switch (id)
-          // {
-          //    case 1 :
-          //    Serial.println("FR OUT OF RANGE !");
-          //    break;
-
-          //    case 2 :
-          //    Serial.println("FL OUT OF RANGE !");
-          //    break;
-
-          //    case 3 :
-          //    Serial.println("BR OUT OF RANGE !");
-          //    break;
-
-          //    case 4 :
-          //    Serial.println("BL OUT OF RANGE !");
-          //    break;
-
-          //    capturedDistance = 0;

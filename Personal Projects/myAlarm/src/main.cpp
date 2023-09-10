@@ -136,127 +136,103 @@ void loopMain (void * parameter)
  
   ///////////////////////////////////////////////////APPON_STATE///////////////////////////////////////////////////////////////
   
-  // if (localCheck(APPON_ADRRESS, 1) == true || sim.AppOn() == true )
-  // {
+  if (localCheck(APPON_ADRRESS, 1) == true || sim.AppOn() == true )
+  {
 
-  // xSemaphoreTake(classMutex, portMAX_DELAY); 
-  //  Serial.println("IM ON"); 
-  //  putCommit(APPON_ADRRESS, 1);
+  xSemaphoreTake(classMutex, portMAX_DELAY); 
+   Serial.println("IM ON"); 
+   putCommit(APPON_ADRRESS, 1);
    
    
-  // ///////////////////////////////////////////////////WIFI_CHECK///////////////////////////////////////////////////////////////////////
-  // if(localCheck(WIFI_ENABLE_ADRRESS, 1) == true || wifi.connectWifiRequest(sim.getBoolData("APP/WIFI/CONNECT"))  == true)
-  //    {
+  ///////////////////////////////////////////////////WIFI_CHECK///////////////////////////////////////////////////////////////////////
+  if(localCheck(WIFI_ENABLE_ADRRESS, 1) == true || wifi.connectWifiRequest(sim.getBoolData("APP/WIFI/CONNECT"))  == true)
+     {
     
-  //     putCommit(WIFI_ENABLE_ADRRESS, 1);
-  //     parseJsonResponse(sim.getRawStringData("APP/WIFI"));
-      
-  //     //FEATURE ADD ON: STATUS BAR TO SHOW CONNECTING TO WIFI
-  //     /*{
+      putCommit(WIFI_ENABLE_ADRRESS, 1);
+      parseJsonResponse(sim.getRawStringData("APP/WIFI"));
 
-  //      }*/
+      if (wifi.isConnected() == false)
+        {
 
-  //     if (wifi.isConnected() == false)
-  //       {
+        String WIFISSID = removeCurly(jsonDoc["SSID"].as<String>());
+        String WIFIPASS = removeCurly(jsonDoc["PASS"].as<String>());
 
-  //       String WIFISSID = removeCurly(jsonDoc["SSID"].as<String>());
-  //       String WIFIPASS = removeCurly(jsonDoc["PASS"].as<String>());
+        const char *WIFISSIDCONVERT = WIFISSID.c_str();
+        const char *WIFIPASSCONVERT = WIFIPASS.c_str();
 
-  //       const char *WIFISSIDCONVERT = WIFISSID.c_str();
-  //       const char *WIFIPASSCONVERT = WIFIPASS.c_str();
+        wifi.setupWifi(WIFISSIDCONVERT,WIFIPASSCONVERT);
 
-  //       wifi.setupWifi(WIFISSIDCONVERT,WIFIPASSCONVERT);
-
-  //       String IP = removeDots(wifi.getIP());
+        String IP = removeDots(wifi.getIP());
         
-  //       sim.postStringData(IP, "IP");
+        sim.postStringData(IP, "IP");
 
-  //       if (wifi.isConnected() == true)
-  //       {
-  //         startServer();
-  //       }
+        if (wifi.isConnected() == true)
+        {
+          startServer();
+        }
 
-  //       for(;;)
-  //       {
-  //         if (sim.getBoolData("APP/WIFI/DISCONNECT") == true)
-  //         {
-  //           WiFi.disconnect(true);
-  //           putCommit(WIFI_ENABLE_ADRRESS, 0);
-  //           break;
-  //         }
-  //       }
+        for(;;)
+        {
+          if (sim.getBoolData("APP/WIFI/DISCONNECT") == true)
+          {
+            WiFi.disconnect(true);
+            putCommit(WIFI_ENABLE_ADRRESS, 0);
+            break;
+          }
+        }
 
-  //         //FEATURE ADD ON: STATUS BAR TO SHOW PROGRAM MODE
-  //         /*{
-
-  //          }*/
-  //        }
+         }
      
-  //    //TURN OF APP AFTER OPERATION
-  //    putCommit(APPON_ADRRESS, 0);
-  //    }
+     //TURN OF APP AFTER OPERATION
+     putCommit(APPON_ADRRESS, 0);
+     }
 
-  // //////////////////////////////////////////GET_DATA//////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////GET_DATA//////////////////////////////////////////////////////////////////////////
   
-  // if (sim.getBoolData("APP/GETDATA/GETALLOWED") == true)
-  // {
-  //   Serial.print("HAD ENTER HERE TO PROGRAM");
+  if (sim.getBoolData("APP/GETDATA/GETALLOWED") == true)
+  {
+    Serial.print("HAD ENTER HERE TO PROGRAM");
 
-  //   parseJsonResponse(sim.getRawStringData("APP/GETDATA"));
+    parseJsonResponse(sim.getRawStringData("APP/GETDATA"));
 
-  //   //String appState = jsonDoc["APPSTATE"].as<String>();
-  //   int  LOWERANGE_VAL   = removeCurly(jsonDoc["SETDETECTIONRANGE"]["LOWERANGE"].as<String>()).toInt();
-  //   int  UPPERANGE_VAL   = removeCurly(jsonDoc["SETDETECTIONRANGE"]["UPPERANGE"].as<String>()).toInt();
-  //   int  ARMED_VAL       = removeCurly(jsonDoc["ARMED"].as<String>()).toInt();
-  //   int  ALARMONOFF_VAL  = removeCurly(jsonDoc["ALARMONOFF"].as<String>()).toInt();
-  //   int  BEEPCOUNT       = removeCurly(jsonDoc["BEEPCOUNT"].as<String>()).toInt();
-  //   int  MODE_GEAR       = removeCurly(jsonDoc["MODEGEAR"].as<String>()).toInt();
-  //   int  SENSITIVITY_VAL = removeCurly(jsonDoc["SENSORSENSITIVITY"].as<String>()).toInt();
-  //   int  FLSTATE         = removeCurly(jsonDoc["SENSORSTATE"]["SENSORSTATEFL"].as<String>()).toInt();
-  //   int  FRSTATE         = removeCurly(jsonDoc["SENSORSTATE"]["SENSORSTATEFR"].as<String>()).toInt();
-  //   int  BLSTATE         = removeCurly(jsonDoc["SENSORSTATE"]["SENSORSTATEBL"].as<String>()).toInt();
-  //   int  BRSTATE         = removeCurly(jsonDoc["SENSORSTATE"]["SENSORSTATEBR"].as<String>()).toInt();
+    //String appState = jsonDoc["APPSTATE"].as<String>();
+    int  LOWERANGE_VAL   = removeCurly(jsonDoc["SETDETECTIONRANGE"]["LOWERANGE"].as<String>()).toInt();
+    int  UPPERANGE_VAL   = removeCurly(jsonDoc["SETDETECTIONRANGE"]["UPPERANGE"].as<String>()).toInt();
+    int  ARMED_VAL       = removeCurly(jsonDoc["ARMED"].as<String>()).toInt();
+    int  ALARMONOFF_VAL  = removeCurly(jsonDoc["ALARMONOFF"].as<String>()).toInt();
+    int  BEEPCOUNT       = removeCurly(jsonDoc["BEEPCOUNT"].as<String>()).toInt();
+    int  MODE_GEAR       = removeCurly(jsonDoc["MODEGEAR"].as<String>()).toInt();
+    int  SENSITIVITY_VAL = removeCurly(jsonDoc["SENSORSENSITIVITY"].as<String>()).toInt();
+    int  FLSTATE         = removeCurly(jsonDoc["SENSORSTATE"]["SENSORSTATEFL"].as<String>()).toInt();
+    int  FRSTATE         = removeCurly(jsonDoc["SENSORSTATE"]["SENSORSTATEFR"].as<String>()).toInt();
+    int  BLSTATE         = removeCurly(jsonDoc["SENSORSTATE"]["SENSORSTATEBL"].as<String>()).toInt();
+    int  BRSTATE         = removeCurly(jsonDoc["SENSORSTATE"]["SENSORSTATEBR"].as<String>()).toInt();
 
-  //   //Serial.println("LOWERANGE IS " + String(LOWERANGE));
-
-  //   // putCommit(LOWERANGE, LOWERANGE_VAL);
-  //   // putCommit(UPPERANGE, UPPERANGE_VAL);
-  //   // putCommit(ARMED, ARMED_VAL);
-  //   // putCommit(ALARMONOFF, ALARMONOFF_VAL);
-  //   // putCommit(BEEPS, BEEPCOUNT);
-  //   // putCommit(MODES, MODE_GEAR);
-  //   // putCommit(SENSITIVITY, SENSITIVITY_VAL);
-  //   // putCommit(SENSORSTATEFL, FLSTATE);
-  //   // putCommit(SENSORSTATEFR, FRSTATE);
-  //   // putCommit(SENSORSTATEBL, BLSTATE);
-  //   // putCommit(SENSORSTATEBR, BRSTATE);
-
-
-  //   //HANDLE OPERATIONS
-  //   if (ARMED_VAL == 1)
-  //   {
-  //     putCommit(GPSLAT_ADRRESS, GP.getLat());
-  //     putCommit(GPSLONG_ADRRESS, GP.getLng());
-  //   }
+    //HANDLE OPERATIONS
+    if (ARMED_VAL == 1)
+    {
+      putCommit(GPSLAT_ADRRESS, GP.getLat());
+      putCommit(GPSLONG_ADRRESS, GP.getLng());
+    }
     
-  // }
+  }
 
-  // ///////////////////////////////////////////POST_DATA////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////POST_DATA////////////////////////////////////////////////////////////////////////
   
-  // String AND = "&";
-  // String FRDATA = "SENSORFR=" + String(sensorFR.getData());
+  String AND = "&";
+  String FRDATA = "SENSORFR=" + String(sensorFR.getData());
 
-  // sim.postMultiData(FRDATA);
+  sim.postMultiData(FRDATA);
 
   
 
-  // //TURN OF APP AFTER OPERATION
-  // putCommit(APPON_ADRRESS, 0);
-  // xSemaphoreGive(classMutex);
+  //TURN OF APP AFTER OPERATION
+  putCommit(APPON_ADRRESS, 0);
+  xSemaphoreGive(classMutex);
 
-  // }
+  }
 
-  // //PARAMETERS BASED ON EEPROM
+  //PARAMETERS BASED ON EEPROM
 
 
   }
@@ -275,37 +251,32 @@ void loop_background(void * parameter)
  
  xSemaphoreTake(classMutex, portMAX_DELAY);
  digitalWrite(LED_BUILTIN, HIGH);
-//  bool xxx = true;
-//  if (xxx == false)
-//  {
+ bool xxx = true;
+ if (xxx == false)
+ {
     
-//    if (main_task != NULL)
-//    {
-//       vTaskDelete(main_task);
-//       main_task = NULL;
-//    }
+   if (main_task != NULL)
+   {
+      vTaskDelete(main_task);
+      main_task = NULL;
+   }
    
-//    sim.stopHttp();
-//    sim.postSingleData(23, "BUCKER");
+   sim.stopHttp();
+   sim.postSingleData(23, "ooo");
 
-//    xTaskCreatePinnedToCore
-//     (
-//     loopMain,
-//     "main_task",
-//     8000,
-//     NULL,
-//     1,
-//     &main_task,
-//     1
-//     );
+   xTaskCreatePinnedToCore
+    (
+    loopMain,
+    "main_task",
+    8000,
+    NULL,
+    1,
+    &main_task,
+    1
+    );
 
-if (dopp1.dopplerTrue())
-{
- Serial.println("BRO IS HIGH");
+   
 }
-
-   
-//  }
 
  //CREATE AND USE TASK then SUSPEND TASK IN EITHER CORE
  
@@ -333,13 +304,6 @@ void setup()
   GP.GPSInit();
   sim.initGSM();
   dopp1.DOPPLERinit(34);
- 
-  //sim.onBootUp();
-  //preset();
-  //FEATURE ADD ON: STATUS BAR TO SHOW ONLINE
-      /*{
-
-      }*/
 
   pinMode(LED_BUILTIN, OUTPUT);
 
@@ -382,20 +346,3 @@ void setup()
  }
  
  
-
-
-
-
-
-//===========================================================================================================================
-
-
-//OBSOLUTE
-// void loop()
-// {
-//  if(firebase.isReady() && firebase.signUpOK && wifi.checkstatus() == true)
-//   {
-
-
-//   }
-// }
