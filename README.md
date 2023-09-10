@@ -5,3 +5,4 @@ Im capable of doing whatever a junior IT able to do such as, reformating a PC,
 troubleshoothing CPU, ram, hard disk etc...
 
  
+Hi
