@@ -27,8 +27,8 @@ new things. Im afraid that I might not able to get the job because of my weaknes
    -MAY NOT ABLE TO PROVIDE SOLUTIONS FOR CRITICAL PROBLEMS
    
 
-If my weakness doesn't matter, then you can call me for an interview, if I never meet the requirements
-then Im sorry, we are both unlucky. Thank You for your time.
+If my weakness doesn't matter, then you can call me for an interview, if I never meet your 
+expectations then Im sorry, we both are unlucky. Thank You for your time.
 
 
 
