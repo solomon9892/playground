@@ -1,6 +1,6 @@
 # Welcome to my Playground
 
-{WAIT}
+this folder contains things that Im learning
 
 
 
