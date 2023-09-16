@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "S2DbFSDUK+wfMYqpJpB8JyqluUMuCSZFohiD0LtQUEynoOkqydVz9/dLmEhmhI5zjpMLITmxfPiJxo3JZ1NPZw==",
+  "success": true,
+  "projectFilePath": "E:\\VisualStudio_IDE\\Projects\\PWR CALCULATOR\\PWR CALCULATOR.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\solom\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.15\\microsoft.netcore.app.runtime.win-x86.6.0.15.nupkg.sha512",
+    "C:\\Users\\solom\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.15\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.15.nupkg.sha512",
+    "C:\\Users\\solom\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.15\\microsoft.aspnetcore.app.runtime.win-x86.6.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}

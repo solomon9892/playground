@@ -1,0 +1,7 @@
+C:\Users\solom\Desktop\pwrCal\PWR CALCULATOR.pdb
+C:\Users\solom\Desktop\pwrCal\D3DCompiler_47_cor3.dll
+C:\Users\solom\Desktop\pwrCal\PenImc_cor3.dll
+C:\Users\solom\Desktop\pwrCal\PresentationNative_cor3.dll
+C:\Users\solom\Desktop\pwrCal\vcruntime140_cor3.dll
+C:\Users\solom\Desktop\pwrCal\wpfgfx_cor3.dll
+C:\Users\solom\Desktop\pwrCal\PWR CALCULATOR.exe

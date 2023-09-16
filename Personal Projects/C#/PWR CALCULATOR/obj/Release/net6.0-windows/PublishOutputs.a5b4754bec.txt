@@ -1,0 +1,5 @@
+C:\Users\solom\Desktop\New folder\PWR CALCULATOR.exe
+C:\Users\solom\Desktop\New folder\PWR CALCULATOR.dll
+C:\Users\solom\Desktop\New folder\PWR CALCULATOR.deps.json
+C:\Users\solom\Desktop\New folder\PWR CALCULATOR.runtimeconfig.json
+C:\Users\solom\Desktop\New folder\PWR CALCULATOR.pdb
